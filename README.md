@@ -7,14 +7,14 @@ Após analisar as requisições consegui implementar com sucesso um cliente que 
 
 
 
-# Tecnologias e conceitos aplicados:
+# Tecnologias e conceitos aplicados
 
 ## Injeção de Dependência
 
 ## Repositórios
 
 ## Domínios ricos
-Evitei usar entidades anêmicas para constriuir as entidades do domínio. A manipulação das entidades é feita estritamente através de métodos criados na própria entidade.
+Evitei usar entidades anêmicas para constriuir as entidades do domínio. A manipulação das entidades é feita estritamente através de métodos criados na própria entidade. Todas as entidades devem ser construidas obrigatoriamente através do construtor onde pode ser feita toda a lógica para setar os dados de forma segura.
 
 ## AutoMapper
 Foi utilizado o auto mapper para facilitar a criação de objetos diferentes mas com características iguais.
