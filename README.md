@@ -1,3 +1,5 @@
+# !!! Nunca compartilhe seu accessToken com ninguém pois isso dará acesso ilimitado da sua conta !!!
+
 # Introdução
 
 Este projeto surgiu como uma ideia de fazer um gerenciador de gastos pessoais. Um sistema que poderia usar dados de diversos serviços para compor os gastos, como por exemplo: Uber, iFood, Rappi, etc.
