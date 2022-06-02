@@ -57,13 +57,22 @@ O projeto que contém o serviço e o cliente que executa as chamadas para o iFoo
 # Como utilizar
 
 Altere no appsettings a conexão com seu banco de dados, após, crie uma migration e atualize seu banco de dados.
+
 Utilize a primeira rota, "enviar-codigo-email" para receber no seu e-mail um código de verificação diretamente do iFood.
+
 A rota deve retornar uma mensagem de sucesso e uma "key", que deve ser guardada para o segundo request.
+
 Verifique seu email e pegue o código recebido.
+
 Na segunda rota. "informar-codigo-recebido-email" passe no input a key recebida do método anterior junto com o código recebido via e-mail.
+
 Caso o código informado esteja correto e válido, você receberá uma mensagem de sucesso e um "token". Guarde para o próximo request.
+
 Na rota "completar-login", passe no input o email utilizado na primeira rota, junto com o token recebido da rota anterior. Após isso
 você já deverá estar autenticado no iFood e um novo registro na tabela "AcessosIfood" deve ter sido criado, com seu email, token e refreshToken.
+
 Após, inicie a sincronização dos seus pedidos, através da rota "sincronizar-pedidos". Use o email que você usou para completar o processo de autenticação.
+
 Você pode ver o status do processo através do menu do hangfire.
+
 Após a sincronização dos seus pedidos, chame a rota "obter-total-gasto" informando seu e-mail para saber qual foi o valor total que você já gastou no iFood.
