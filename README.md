@@ -4,6 +4,7 @@ Este projeto surgiu como uma ideia de fazer um gerenciador de gastos pessoais. U
 
 Inicialmente decidi implementar apenas o iFood. Para isso analisei qual era o processo para fazer o login no iFood através do Google Chrome Developer tools.
 Após analisar as requisições consegui implementar com sucesso um cliente que consiga fazer o login no ifood apenas usando o método de login via EMAIL. Não implementei os demais métodos de login para economia de tempo nessa POC.
+Não foi dado muito enfase na questão de tratativa de erros (respostas inválidas do iFood entre outros) a fim de economizar tempo e atingir o objetivo que é mostrar a somatória dos gastos. Entretanto, tratativas básicas de erros foram sim utilizadas.
 
 
 
@@ -32,6 +33,9 @@ Utilizado o cache provider do .Net framework core para salvar em cache o token a
 As rotas devem ser o mais enxuta possível, cuidando apenas de validar o input do usuario, chamar o método do Service responsável e retornar os dados esperados.
 Exemplo de fluxo: Controller -> Service -> Banco de dados (se necessário) -> Retorna ao Controller -> Saida mostrada ao usuario
 Os inputs são validados através de Attributos. (Required, EmailAddress, etc)
+
+## Logs
+Foi implementado um sistema básico de Logs que salva todos os requests feitos externamente, no caso o iFood. Guarda o input e a saida obtida, bem como data, código de erro. Util para analises em caso de algum erro inesperado na aplicação.
 
 # Estrutura dos Projetos
 
