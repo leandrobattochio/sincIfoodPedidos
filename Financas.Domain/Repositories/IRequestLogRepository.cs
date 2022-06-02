@@ -2,7 +2,7 @@
 
 namespace Financas.Domain.Repositories
 {
-    public interface IRequestLogRepository : IRepository<RequestLog>
+    public interface IRequestLogRepository : IRepository<RequestLog>, ITransientDependency
     {
     }
 }

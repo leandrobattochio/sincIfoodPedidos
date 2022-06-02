@@ -1,9 +1,10 @@
-﻿using Financas.Domain;
+﻿using Financas.Core;
+using Financas.Domain;
 using System.Threading.Tasks;
 
 namespace Financas.Ifood.Service
 {
-    public interface IIFoodService
+    public interface IIFoodService : ITransientDependency
     {
         Task<string> EnviarCodigoDeConfirmacaoParaEmail(string email);
         Task<string> EnviarCodigoRecebidoEmail(string key, string codigo);

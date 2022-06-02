@@ -1,7 +1,4 @@
 using Financas.Data;
-using Financas.Data.Repositories;
-using Financas.Domain.Repositories;
-using Financas.Ifood.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +9,10 @@ using Microsoft.OpenApi.Models;
 using System;
 using Hangfire;
 using Hangfire.SqlServer;
-using Financas.Ifood.Client;
+using Autofac;
+using Financas.Ifood;
 
-namespace Financas
+namespace Financas.HttpHost
 {
     public class Startup
     {
@@ -25,7 +23,12 @@ namespace Financas
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new IFoodModule());
+            builder.RegisterModule(new RepositoriesModule());
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FinancasDbContext>(options =>
@@ -35,12 +38,12 @@ namespace Financas
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddTransient<IEstabelecimentoIfoodRepository, EstabelecimentoIfoodRepository>();
-            services.AddTransient<IPedidoIfoodRepository, PedidoIfoodRepository>();
-            services.AddTransient<IRequestLogRepository, RequestLogRepository>();
-            services.AddTransient<IIFoodClientWrapper, IFoodClientWrapper>();
-            services.AddTransient<IAcessoIfoodRepository, AcessoIfoodRepository>();
-            services.AddTransient<IIFoodService, IFoodService>();
+            //services.AddTransient<IEstabelecimentoIfoodRepository, EstabelecimentoIfoodRepository>();
+            //services.AddTransient<IPedidoIfoodRepository, PedidoIfoodRepository>();
+            //services.AddTransient<IRequestLogRepository, RequestLogRepository>();
+            //services.AddTransient<IIFoodClientWrapper, IFoodClientWrapper>();
+            //services.AddTransient<IAcessoIfoodRepository, AcessoIfoodRepository>();
+            //services.AddTransient<IIFoodService, IFoodService>();
 
             services.AddMemoryCache();
 
@@ -67,7 +70,6 @@ namespace Financas
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

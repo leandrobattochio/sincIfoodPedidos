@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Financas.Core;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
 namespace Financas.Ifood.Client
 {
-    public interface IIFoodClientWrapper
+    public interface IIFoodClientWrapper : ITransientDependency
     {
         // Chamadas HTTP
         Task<AuthorizationCodesResult> GetAuthorizationCodes(string email);
